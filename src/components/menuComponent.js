@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Card, CardImg, CardBody, CardImgOverlay, CardText, CardTitle } from 'reactstrap';
-import  Dishdetail from './DishdetailComponent ';
 
 function Menu(props) {
-    const [selectedDish, setSelecteddish] = useState(null);
-    function onDishSelected(dish){
-        setSelecteddish(dish);
-    }
+    
+    
 
     const menu = props.dishes.map((dish) => {
         return (
             <div className="col-12 col-md-5 m-1">
-                <Card key={dish.id} onClick={() => onDishSelected(dish)}>
+                <Card onClick={()=>props.onClick(dish.id)}>
 
                     <CardImg src={dish.image} alt={dish.name} />
 
@@ -30,7 +27,6 @@ function Menu(props) {
 
                 {menu}
             </div>
-                    <Dishdetail dish = {selectedDish} />
                 
         </div>
     );
